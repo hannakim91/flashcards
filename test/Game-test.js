@@ -34,9 +34,13 @@ describe('Game', function() {
   }); 
 
   it('should keep track of the current round', function() {
-    game.startNewRound(deck);
-    console.log(1, game.currentRound)
-    console.log(2, round)
+    game.showRound(deck);
     expect(game.currentRound).to.deep.equal(round);
+  });
+
+  describe('.start() method', function() {
+    it('should create Cards for a Deck to be used in a Round', function() {
+      expect(game.start()).to.deep.equal(round);
+    });
   });
 });
