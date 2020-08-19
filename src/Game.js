@@ -33,7 +33,7 @@ class Game {
   }
 
   printQuestion(round) {
-    util.main(round, new Deck(prototypeQuestions));
+    util.main(round);
   }
 }
 
