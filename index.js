@@ -10,7 +10,7 @@ const Round = require('./src/Round');
 const Game = require('./src/Game');
 
 const game = new Game()
-game.start(prototypeQuestions)
+game.start()
 
 // Start the server on port 3000
 app.listen(3000, '127.0.0.1');  
