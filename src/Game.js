@@ -20,6 +20,7 @@ class Game {
     const cardC = new Card(3, 'What type of prototype method directly modifies the existing array?', ['mutator method', 'accessor method', 'iteration method'], 'mutator method');
     const cards = [cardA, cardB, cardC]
     const newDeck = new Deck(cardData || cards)
+    // 
     const newRound = new Round(newDeck)
     this.printMessage(newDeck, newRound)
     this.printQuestion(newRound)
@@ -32,8 +33,10 @@ class Game {
   }
 
   printQuestion(round) {
-    util.main(round);
+    util.main(round, new Deck(prototypeQuestions));
   }
 }
 
+//when you start game - have cards class that has set of cards (array of cards)
+// pull newDeck out into a new method
 module.exports = Game;

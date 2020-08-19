@@ -7,7 +7,7 @@ const Turn = require('../src/Turn');
 const Round = require('../src/Round');
 const Game = require('../src/Game');
 
-describe('Game', function() {
+describe('Game', () => {
   let card1;
   let card2;
   let card3;
@@ -25,20 +25,20 @@ describe('Game', function() {
     game = new Game(round);
   });
 
-  it('should be a function', function() {
+  it('should be a function', () => {
     expect(Game).to.be.a('function');
   });
 
-  it('should be an instance of Game', function() {
+  it('should be an instance of Game', () => {
     expect(game).to.be.an.instanceof(Game);
   }); 
 
-  it('should keep track of the current round', function() {
+  it('should keep track of the current round', () => {
     game.showRound(deck);
     expect(game.currentRound).to.deep.equal(round);
   });
 
-  describe('.start() method', function() {
+  describe('.start() method', () => {
     it('should create Cards for a Deck to be used in a Round', function() {
       expect(game.start()).to.deep.equal(round);
     });

@@ -1,4 +1,6 @@
 const inquirer = require('inquirer');
+const data = require('../src/data');
+const prototypeQuestions = data.prototypeData;
 
 const genList = (round) => {
   let card = round.returnCurrentCard();
@@ -29,7 +31,7 @@ const confirmUpdate = (id, round) => {
   }
 }
 
-async function main(round) {
+async function main(round, deck) {
 
   const currentRound = await getRound(round);
   const getAnswer = await inquirer.prompt(genList(currentRound));
@@ -38,7 +40,8 @@ async function main(round) {
     if(!round.returnCurrentCard() && round.calculatePercentCorrect() >= 90) {
       round.endRound();
     } else if (!round.returnCurrentCard() && round.calculatePercentCorrect() < 90) {
-      round.restartRound();
+      round.restartRound(deck);
+      main(1) // if you restarted game, how do you get game started again? something needs to get executed to start questions again** 
     } else {
       main(round);
     }
