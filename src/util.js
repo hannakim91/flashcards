@@ -41,23 +41,18 @@ async function main(round) {
   const getAnswer = await inquirer.prompt(genList(currentRound));
   const getConfirm = await inquirer.prompt(confirmUpdate(getAnswer.answers, round));
 
-  if(!round.returnCurrentCard() && round.calculatePercentCorrect() >= 90) {
+  if(!round.returnCurrentCard() && round.calculatePercentCorrect() >= 80) {
     round.endRound();
     process.exit();
-  }
-  
-  if (!round.returnCurrentCard()) {
+  } else if (!round.returnCurrentCard()) {
     round.endRound()
     const cards = data.prototypeData.map(({id, question, answers, correctAnswer}) => {
       return new Card(id, question, answers, correctAnswer)
     })
     const deck = new Deck(cards)
-    console.log(cards)
-    console.log(deck)
     round = new Round(deck)
   }
   main(round);
-  
 }
 
 module.exports.main = main;
