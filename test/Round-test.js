@@ -77,11 +77,4 @@ describe('Round', function() {
       expect(round.calculatePercentCorrect()).to.equal(0);
     });
   });
-
-  it('should restart game with a given set of cards', function() {
-    round.restartRound(cards)
-    expect(round.deck).to.deep.equal(cards)
-  })
-
- 
 });
