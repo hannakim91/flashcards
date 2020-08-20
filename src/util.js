@@ -48,12 +48,6 @@ async function main(round) {
   
   if (!round.returnCurrentCard()) {
     round.endRound()
-    console.log('Repeat this game with same deck of cards')
-    console.log('XXXXXX', prototypeQuestions)
-    // const cards = data.prototypeData.map(question => {
-    //   console.log(question)
-    //   return new Card(question.id, question.question, question.answers, question.correctAnswer)
-    // })
     const cards = data.prototypeData.map(({id, question, answers, correctAnswer}) => {
       return new Card(id, question, answers, correctAnswer)
     })
@@ -61,18 +55,9 @@ async function main(round) {
     console.log(cards)
     console.log(deck)
     round = new Round(deck)
-    // this starts cycle again -- and newRound is basically round with 'new' cards
-    // when % correct is under 90%
-    // end current round
-    // instantiate new Deck with prototypeData   
-    // create new instance of Round with new Deck passed in as arg
-    // invoke main(round)
   }
   main(round);
   
 }
 
 module.exports.main = main;
-
-// prototypequestions may be getting changed when you shift things out of array with round.takeTurn
-// solution: make a copy of prototype questions

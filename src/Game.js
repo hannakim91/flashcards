@@ -32,6 +32,4 @@ class Game {
   }
 }
 
-//when you start game - have cards class that has set of cards (array of cards)
-// pull newDeck out into a new method
 module.exports = Game;
