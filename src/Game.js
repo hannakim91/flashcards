@@ -10,21 +10,16 @@ class Game {
     this.currentRound = null
   }
 
-  showRound(deck) {
-    this.currentRound = new Round(deck)
+  showRound() {
+    return this.currentRound
   }
 
   start(cardData) {
-    const cardA = new Card(1, 'What allows you to define a set of related information using key-value pairs?', ['object', 'array', 'function'], 'object');
-    const cardB = new Card(2, 'What is a comma-separated list of related values?', ['array', 'object', 'function'], 'array');
-    const cardC = new Card(3, 'What type of prototype method directly modifies the existing array?', ['mutator method', 'accessor method', 'iteration method'], 'mutator method');
-    const cards = [cardA, cardB, cardC]
-    const newDeck = new Deck(cardData || cards)
-    // 
-    const newRound = new Round(newDeck)
-    this.printMessage(newDeck, newRound)
-    this.printQuestion(newRound)
-    return newRound
+    const cardCopy = [...cardData]
+    const newDeck = new Deck(cardCopy)
+    this.currentRound = new Round(newDeck)
+    this.printMessage(newDeck, this.currentRound)
+    this.printQuestion(this.currentRound)
   }
 
   printMessage(deck, round) {
