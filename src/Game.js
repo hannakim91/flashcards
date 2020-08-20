@@ -16,8 +16,8 @@ class Game {
 
   start(cardData) {
     const cardCopy = [...cardData]
-    // should cards be instantiated here instead of deck getting array of card objects? -- create card objects from cardData
-    const newDeck = new Deck(cardCopy)
+    const cards = cardCopy.map(({id, question, answers, correctAnswer}) => new Card(id, question, answers, correctAnswer))
+    const newDeck = new Deck(cards)
     this.currentRound = new Round(newDeck)
     this.printMessage(newDeck, this.currentRound)
     this.printQuestion(this.currentRound)
